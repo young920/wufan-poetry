@@ -95,11 +95,7 @@
         /* Hero Section - Featured Poems Carousel */
         .hero {
             padding-top: 100px;
-            padding-bottom: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding-bottom: 2rem;
             position: relative;
         }
         
@@ -108,7 +104,7 @@
             width: 100%;
             margin: 0 auto;
             position: relative;
-            padding: 0 60px;
+            padding: 0 80px;
         }
         
         .carousel-wrapper {
@@ -118,11 +114,12 @@
         .carousel-track {
             display: flex;
             transition: transform 0.5s ease;
+            align-items: flex-start;
         }
         
         .carousel-slide {
             min-width: 100%;
-            padding: 2rem;
+            padding: 1rem 0;
             text-align: center;
         }
         
@@ -1236,7 +1233,7 @@
         document.querySelectorAll('.lazy-image').forEach(img => {
             imageObserver.observe(img);
         });
-    // cache-buster: 1783265093
+    // cache-buster: 1783265570
     </script>
 </body>
 </html>
