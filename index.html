@@ -81,7 +81,7 @@
             width: 100%;
         }
         
-        /* Hero Section */
+        /* Hero Section - Pure Text Tension */
         .hero {
             height: 100vh;
             display: flex;
@@ -89,59 +89,67 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%);
+            background: #0a0806;
             position: relative;
             overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('images/poem_001.jpg') center/cover;
-            opacity: 0.15;
-            filter: blur(2px);
         }
         
         .hero-content {
             position: relative;
             z-index: 1;
             padding: 2rem;
+            width: 100%;
+            max-width: 1200px;
         }
         
         .hero h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 4rem;
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(6rem, 18vw, 16rem);
             font-weight: 300;
-            letter-spacing: 0.3em;
-            margin-bottom: 1rem;
-            color: var(--dark-brown);
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+            color: #F5EDE4;
+            line-height: 1;
+            text-indent: 0.15em;
         }
         
         .hero .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            letter-spacing: 0.2em;
-            margin-bottom: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: #6B5B4B;
+            letter-spacing: 0.6em;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            text-transform: uppercase;
         }
         
         .hero .intro {
-            max-width: 600px;
-            font-size: 0.95rem;
-            color: var(--text-light);
-            line-height: 2;
-            margin-top: 2rem;
+            max-width: 480px;
+            font-size: 0.85rem;
+            color: #5A4A3A;
+            line-height: 2.4;
+            margin: 0 auto;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+        
+        .hero-divider {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, #3A2A1A, transparent);
+            margin: 2rem auto;
         }
         
         .scroll-indicator {
             position: absolute;
-            bottom: 2rem;
+            bottom: 3rem;
             left: 50%;
             transform: translateX(-50%);
             animation: bounce 2s infinite;
+        }
+        
+        .scroll-indicator svg path {
+            stroke: #3A2A1A;
         }
         
         @keyframes bounce {
@@ -422,6 +430,7 @@
         <div class="hero-content">
             <h1>勿繁</h1>
             <p class="subtitle">短诗集</p>
+            <div class="hero-divider"></div>
             <p class="intro">
                 写字的人。二零一五年至二零一九年间，留下一些短句。<br>
                 不归类，不解释，不追认。
@@ -429,7 +438,7 @@
         </div>
         <div class="scroll-indicator">
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                <path d="M15 5V25M15 25L8 18M15 25L22 18" stroke="#5C4033" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15 5V25M15 25L8 18M15 25L22 18" stroke="#8B7355" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </div>
     </section>
