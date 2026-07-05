@@ -542,15 +542,7 @@
     </div>
     
     <script>
-        // Featured poems (first 4)
-        const featuredPoems = [
-            { title: "游者之命", date: "2016.10.8", content: "我们都是过客，在时间的河流里漂泊..." },
-            { title: "风之语", date: "2017.3.15", content: "风从远方来，带着海的味道..." },
-            { title: "夜行者", date: "2018.7.22", content: "在黑暗中行走，寻找那一丝光亮..." },
-            { title: "归途", date: "2019.1.1", content: "所有的路都通向远方，除了回家的路..." }
-        ];
-        
-        // All poems data will be inserted here
+        // All poems data
         const poems = [
             {
                 title: '我想',
@@ -1117,8 +1109,9 @@
                 image: 'images/poem_094.jpg'
             }
         ];
-        ];
         
+        // Featured poems = first 4 from poems array
+        const featuredPoems = poems.slice(0, 4);
         
         let currentSlide = 0;
         
