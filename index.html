@@ -159,6 +159,110 @@
             60% { transform: translateX(-50%) translateY(-5px); }
         }
         
+        /* Hero Poem Card Stack */
+        .hero-poem-card {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .card-stack {
+            position: relative;
+            width: 320px;
+            height: 420px;
+        }
+        
+        .card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(44, 24, 16, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .card-3 {
+            background: var(--cream);
+            transform: rotate(-6deg) translateY(10px) translateX(-8px);
+            z-index: 1;
+        }
+        
+        .card-2 {
+            background: #E8DED0;
+            transform: rotate(3deg) translateY(5px) translateX(6px);
+            z-index: 2;
+        }
+        
+        .card-1 {
+            background: white;
+            transform: rotate(0deg);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .card-inner {
+            text-align: center;
+        }
+        
+        .card-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .card-line {
+            width: 40px;
+            height: 1px;
+            background: var(--dark-brown);
+            margin: 1.5rem auto;
+        }
+        
+        .card-excerpt {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 2;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .card-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            letter-spacing: 0.15em;
+        }
+        
+        .card-stack:hover .card-1 {
+            transform: rotate(0deg) translateY(-8px);
+            box-shadow: 0 30px 80px rgba(44, 24, 16, 0.2);
+        }
+        
+        .card-stack:hover .card-2 {
+            transform: rotate(5deg) translateY(8px) translateX(12px);
+        }
+        
+        .card-stack:hover .card-3 {
+            transform: rotate(-8deg) translateY(15px) translateX(-12px);
+        }
+        
         /* Featured Section */
         .featured {
             padding: 6rem 2rem;
@@ -436,6 +540,21 @@
                 写字的人。二零一五年至二零一九年间，留下一些短句。<br>
                 不归类，不解释，不追认。
             </p>
+            <div class="hero-poem-card">
+                <div class="card-stack">
+                    <div class="card card-3"></div>
+                    <div class="card card-2"></div>
+                    <div class="card card-1">
+                        <div class="card-inner">
+                            <p class="card-label">精选</p>
+                            <h2 class="card-title">游者之命</h2>
+                            <div class="card-line"></div>
+                            <p class="card-excerpt">"我们都是过客，在时间的河流里漂泊，<br>寻找着属于自己的岸。"</p>
+                            <p class="card-date">2016.10.8</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="scroll-indicator">
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
