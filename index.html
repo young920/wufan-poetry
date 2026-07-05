@@ -143,12 +143,11 @@
         
         .carousel-content {
             font-size: 1.1rem;
-            line-height: 2;
+            line-height: 1.8;
             max-width: 600px;
             margin: 0 auto 2rem;
             text-align: left;
-            white-space: pre-wrap;
-            word-wrap: break-word;
+            white-space: normal;
         }
         
         /* Audio Player */
@@ -1124,7 +1123,7 @@
                 slide.innerHTML = `
                     <div class="carousel-date">${poem.date}</div>
                     <h2 class="carousel-title">${poem.title}</h2>
-                    <div class="carousel-content">${poem.content}</div>
+                    <div class="carousel-content">${poem.content.replace(/\n/g, '<br>')}</div>
                     <div class="audio-player">
                         <button class="play-btn">▶</button>
                         <div class="progress-bar"><div class="progress-fill"></div></div>
@@ -1237,7 +1236,7 @@
         document.querySelectorAll('.lazy-image').forEach(img => {
             imageObserver.observe(img);
         });
-    // cache-buster: 1783263629
+    // cache-buster: 1783265093
     </script>
 </body>
 </html>
