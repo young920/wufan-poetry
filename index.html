@@ -24,36 +24,35 @@
         body {
             font-family: 'Noto Serif SC', 'Songti SC', serif;
             background-color: var(--warm-white);
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E");
             color: var(--text-dark);
             line-height: 1.8;
             overflow-x: hidden;
         }
         
-        /* Navigation - Rattle Style */
+        /* Navigation - Floating Pill Style */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: transparent;
-            padding: 1.2rem 2rem;
+            top: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(245, 237, 228, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 0.8rem 2rem;
             z-index: 1000;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            border-bottom: 1px solid transparent;
-            transition: background 0.3s ease, border-color 0.3s ease;
-        }
-        
-        nav.scrolled {
-            background: var(--warm-white);
-            border-bottom-color: var(--border-color);
+            gap: 2rem;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(44, 24, 16, 0.08);
         }
         
         .nav-brand {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--text-dark);
             letter-spacing: 0.1em;
@@ -61,14 +60,14 @@
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
         }
         
         .nav-links a {
             color: var(--text-dark);
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             letter-spacing: 0.05em;
             transition: color 0.3s;
             position: relative;
@@ -2127,6 +2126,26 @@
             } else {
                 nav.classList.remove('scrolled');
             }
+        });
+        // Back to top button
+        const backToTop = document.createElement('button');
+        backToTop.innerHTML = '↑';
+        backToTop.className = 'back-to-top';
+        backToTop.style.cssText = 'position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;border:1px solid var(--border-color);background:rgba(245,237,228,0.9);color:var(--text-dark);font-size:1.2rem;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s ease;z-index:999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);';
+        document.body.appendChild(backToTop);
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > window.innerHeight * 0.5) {
+                backToTop.style.opacity = '1';
+                backToTop.style.visibility = 'visible';
+            } else {
+                backToTop.style.opacity = '0';
+                backToTop.style.visibility = 'hidden';
+            }
+        });
+        
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>
