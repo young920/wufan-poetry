@@ -114,7 +114,7 @@
         .carousel-track {
             display: flex;
             transition: transform 0.5s ease;
-            align-items: flex-start;
+            align-items: stretch;
         }
         
         .carousel-slide {
@@ -226,13 +226,12 @@
             font-weight: 600;
         }
         
-        /* Carousel Arrows */
+        /* Carousel Arrows - positioned at title level */
         .carousel-arrow {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
+            top: 120px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: rgba(255,255,255,0.9);
             border: 1px solid rgba(92, 64, 51, 0.2);
@@ -240,7 +239,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             z-index: 10;
             transition: all 0.3s;
         }
@@ -250,8 +249,8 @@
             color: white;
         }
         
-        .carousel-arrow.prev { left: 0; }
-        .carousel-arrow.next { right: 0; }
+        .carousel-arrow.prev { left: 5px; }
+        .carousel-arrow.next { right: 5px; }
         
         /* Introduction Section */
         .intro-section {
@@ -1112,8 +1111,21 @@
         
         let currentSlide = 0;
         
+        function moveCarousel(direction) {
+            const track = document.getElementById('carouselTrack');
+            const wrapper = document.querySelector('.carousel-wrapper');
+            currentSlide = (currentSlide + direction + featuredPoems.length) % featuredPoems.length;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            // Adjust wrapper height to current slide
+            const slides = track.querySelectorAll('.carousel-slide');
+            if (slides[currentSlide]) {
+                wrapper.style.height = slides[currentSlide].offsetHeight + 'px';
+            }
+        }
+        
         function initCarousel() {
             const track = document.getElementById('carouselTrack');
+            const wrapper = document.querySelector('.carousel-wrapper');
             featuredPoems.forEach((poem, index) => {
                 const slide = document.createElement('div');
                 slide.className = 'carousel-slide';
@@ -1136,12 +1148,11 @@
                 `;
                 track.appendChild(slide);
             });
-        }
-        
-        function moveCarousel(direction) {
-            const track = document.getElementById('carouselTrack');
-            currentSlide = (currentSlide + direction + featuredPoems.length) % featuredPoems.length;
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            // Set initial height
+            const slides = track.querySelectorAll('.carousel-slide');
+            if (slides[0]) {
+                wrapper.style.height = slides[0].offsetHeight + 'px';
+            }
         }
         
         function renderPoems() {
@@ -1233,7 +1244,7 @@
         document.querySelectorAll('.lazy-image').forEach(img => {
             imageObserver.observe(img);
         });
-    // cache-buster: 1783265570
+    // cache-buster: 1783293633
     </script>
 </body>
 </html>
