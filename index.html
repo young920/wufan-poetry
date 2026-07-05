@@ -41,50 +41,29 @@
             background-size: auto;
             pointer-events: none;
             z-index: 1;
-            opacity: 0.7;
+            opacity: 0.4;
         }
         
-        /* Custom Scrollbar - Hide ugly default */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 3px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-light);
-        }
-        
-        /* Navigation - Floating Pill Style */
+        /* Navigation - Long Bar Style */
         nav {
             position: fixed;
-            top: 1.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(245, 237, 228, 0.85);
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(245, 237, 228, 0.95);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            padding: 0.8rem 2rem;
+            padding: 1rem 2rem;
             z-index: 1000;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            gap: 2rem;
-            border-radius: 50px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 20px rgba(44, 24, 16, 0.08);
+            border-bottom: 1px solid var(--border-color);
         }
         
         .nav-brand {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 600;
             color: var(--text-dark);
             letter-spacing: 0.1em;
@@ -92,14 +71,15 @@
         
         .nav-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             list-style: none;
+            align-items: center;
         }
         
         .nav-links a {
             color: var(--text-dark);
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             letter-spacing: 0.05em;
             transition: color 0.3s;
             position: relative;
@@ -124,1403 +104,50 @@
             color: var(--dark-brown);
         }
         
-        /* Hero Section - Pure Text Tension */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: var(--warm-white);
+        /* Main Content */
+        main {
+            position: relative;
+            z-index: 2;
+            padding-top: 80px;
+        }
+        
+        /* Featured Poems Carousel */
+        .featured-section {
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .featured-carousel {
             position: relative;
             overflow: hidden;
         }
         
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            padding: 2rem;
-            width: 100%;
-            max-width: 1200px;
+        .featured-slides {
+            display: flex;
+            transition: transform 0.5s ease;
         }
         
-        .hero h1 {
-            font-family: 'Noto Serif SC', serif;
-            font-size: clamp(8rem, 22vw, 20rem);
-            font-weight: 300;
-            letter-spacing: 0.2em;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-            line-height: 0.9;
-            text-indent: 0.2em;
-            text-shadow: none;
+        .featured-slide {
+            min-width: 100%;
+            padding: 2rem 0;
         }
         
-        .hero .subtitle {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            color: var(--text-light);
-            letter-spacing: 0.6em;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-            text-transform: uppercase;
-        }
-        
-        .hero .intro {
-            max-width: 480px;
-            font-size: 0.85rem;
-            color: var(--text-light);
-            line-height: 2.4;
-            margin: 0 auto;
-            font-weight: 300;
-            letter-spacing: 0.05em;
-        }
-        
-        .hero-divider {
-            width: 1px;
-            height: 60px;
-            background: linear-gradient(to bottom, transparent, var(--dark-brown), transparent);
-            margin: 2rem auto;
-        }
-        
-        .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-        
-        .scroll-indicator svg path {
-            stroke: var(--dark-brown);
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
-        }
-        
-        /* Hero Poem - Featured Poem Display */
-        .hero-poem {
-            margin-top: 4rem;
-            text-align: center;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0 2rem;
-        }
-        
-        .hero-poem-label {
+        .featured-date {
             font-family: 'Cormorant Garamond', serif;
             font-size: 0.75rem;
             color: var(--text-light);
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-        }
-        
-        .hero-poem-title {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.15em;
-        }
-        
-        .hero-poem-line {
-            width: 60px;
-            height: 1px;
-            background: var(--dark-brown);
-            margin: 2rem auto;
-        }
-        
-        .hero-poem-text {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 1.4rem;
-            color: var(--text-dark);
-            line-height: 2.4;
-            margin-bottom: 2rem;
-            font-weight: 300;
-            letter-spacing: 0.05em;
-        }
-        
-        .hero-poem-date {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
-            color: var(--text-light);
             letter-spacing: 0.2em;
-        }
-        
-        /* Featured Section - Rattle Style: No borders, whitespace separation */
-        .featured {
-            padding: 8rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.85rem;
-            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 0.3em;
             text-align: center;
-            margin-bottom: 5rem;
-            color: var(--text-light);
-        }
-        
-        .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 4rem;
-        }
-        
-        .featured-item {
-            display: flex;
-            gap: 2rem;
-            align-items: flex-start;
-            padding: 0;
-            background: transparent;
-            border: none;
-            transition: opacity 0.3s;
-        }
-        
-        .featured-item:hover {
-            opacity: 0.8;
-        }
-        
-        .featured-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-        
-        .featured-image {
-            width: 200px;
-            height: 280px;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-        
-        .featured-content {
-            flex: 1;
-        }
-        
-        .featured-content h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-            color: var(--dark-brown);
-        }
-        
-        .featured-content .date {
-            font-size: 0.85rem;
-            color: var(--text-light);
             margin-bottom: 1rem;
-            letter-spacing: 0.1em;
         }
         
-        .featured-content .excerpt {
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            line-height: 2;
-            margin-bottom: 1.5rem;
-        }
-        
-        .read-more {
-            display: inline-block;
-            color: var(--dark-brown);
-            text-decoration: none;
-            font-size: 0.9rem;
-            border-bottom: 1px solid var(--dark-brown);
-            padding-bottom: 2px;
-            transition: opacity 0.3s;
-        }
-        
-        .read-more:hover {
-            opacity: 0.7;
-        }
-        
-        /* All Poems Section - Rattle Style: Subtle background shift, no cards */
-        .all-poems {
-            padding: 8rem 2rem;
-            background: var(--cream);
-        }
-        
-        .poems-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .poem-card {
-            background: transparent;
-            border: none;
-            overflow: hidden;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-        
-        .poem-card:hover {
-            opacity: 0.8;
-        }
-        
-        .poem-card-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .poem-card-content {
-            padding: 1.5rem;
-        }
-        
-        .poem-card h3 {
+        .featured-author {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-            color: var(--dark-brown);
-        }
-        
-        .poem-card .date {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-            letter-spacing: 0.1em;
-        }
-        
-        .poem-card .preview {
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            line-height: 1.8;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-        }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-content {
-            background: var(--warm-white);
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 3rem;
-            position: relative;
-            border: 1px solid var(--border-color);
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--text-light);
-            transition: color 0.3s;
-        }
-        
-        .modal-close:hover {
-            color: var(--dark-brown);
-        }
-        
-        .modal-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            margin-bottom: 2rem;
-        }
-        
-        .modal h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-            color: var(--dark-brown);
-        }
-        
-        .modal .date {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            letter-spacing: 0.1em;
-        }
-        
-        .modal .poem-text {
             font-size: 1rem;
-            line-height: 2.5;
-            white-space: pre-line;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark-brown);
-            color: var(--cream);
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-        
-        footer p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                top: 0.8rem;
-                left: 1rem;
-                right: 1rem;
-                transform: none;
-                width: calc(100% - 2rem);
-                padding: 1rem 1.5rem;
-                border-radius: 12px;
-                justify-content: space-between;
-            }
-            
-            .nav-brand {
-                font-size: 1.1rem;
-            }
-            
-            .nav-links {
-                gap: 1rem;
-            }
-            
-            .nav-links a {
-                font-size: 0.75rem;
-            }
-            
-            .hero {
-                min-height: 100vh;
-                height: auto;
-                padding: 6rem 1rem 4rem;
-            }
-            
-            .hero-content {
-                padding: 1rem;
-                width: 100%;
-                max-width: 100%;
-                overflow-x: hidden;
-            }
-            
-            .hero h1 {
-                font-size: clamp(3rem, 15vw, 6rem);
-                letter-spacing: 0.1em;
-                text-indent: 0.1em;
-            }
-            
-            .hero .subtitle {
-                font-size: 0.85rem;
-                letter-spacing: 0.4em;
-            }
-            
-            .hero .intro {
-                font-size: 0.8rem;
-                padding: 0 1rem;
-                max-width: 100%;
-            }
-            
-            /* Hero poem mobile */
-            .hero-poem {
-                margin-top: 2.5rem;
-                padding: 0 1.5rem;
-            }
-            
-            .hero-poem-title {
-                font-size: 1.8rem;
-            }
-            
-            .hero-poem-text {
-                font-size: 1.1rem;
-                line-height: 2.2;
-            }
-            
-            .featured-item,
-            .featured-item:nth-child(even) {
-                flex-direction: column;
-            }
-            
-            .featured-image {
-                width: 100%;
-                height: 200px;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="texture-overlay"></div>
-    <nav>
-        <div class="nav-brand">勿繁</div>
-        <ul class="nav-links">
-            <li><a href="#featured">精选</a></li>
-            <li><a href="#all-poems">全部诗作</a></li>
-            <li><a href="#about">关于</a></li>
-        </ul>
-    </nav>
-    
-    <section class="hero">
-        <div class="hero-content">
-            <h1>勿繁</h1>
-            <p class="subtitle">短诗集</p>
-            <div class="hero-divider"></div>
-            <p class="intro">
-                写字的人。二零一五年至二零一九年间，留下一些短句。<br>
-                不归类，不解释，不追认。
-            </p>
-        </div>
-        <div class="scroll-indicator">
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                <path d="M15 5V25M15 25L8 18M15 25L22 18" stroke="#8B7355" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
-    </section>
-    
-    <section class="featured" id="featured">
-        <h2 class="section-title">精选诗作</h2>
-        <div class="featured-grid">
-            <div class="featured-item">
-                <img data-src="images/poem_005.jpg" alt="游者之命" class="featured-image">
-                <div class="featured-content">
-                    <h3>游者之命</h3>
-                    <p class="date">2016.10.8</p>
-                    <p class="excerpt">"我们都是过客，在时间的河流里漂泊..."</p>
-                    <a href="#" class="read-more" data-poem="4">阅读全文 →</a>
-                </div>
-            </div>
-            <div class="featured-item">
-                <img data-src="images/poem_004.jpg" alt="生命" class="featured-image">
-                <div class="featured-content">
-                    <h3>生命</h3>
-                    <p class="date">2016.10.7</p>
-                    <p class="excerpt">"生命是一场盛大的孤独..."</p>
-                    <a href="#" class="read-more" data-poem="3">阅读全文 →</a>
-                </div>
-            </div>
-            <div class="featured-item">
-                <img data-src="images/poem_013.jpg" alt="亡" class="featured-image">
-                <div class="featured-content">
-                    <h3>亡</h3>
-                    <p class="date">2016.10.15</p>
-                    <p class="excerpt">"死亡不是终点，遗忘才是..."</p>
-                    <a href="#" class="read-more" data-poem="12">阅读全文 →</a>
-                </div>
-            </div>
-            <div class="featured-item">
-                <img data-src="images/poem_052.jpg" alt="诗是毒药" class="featured-image">
-                <div class="featured-content">
-                    <h3>诗是毒药</h3>
-                    <p class="date">2017.11.19</p>
-                    <p class="excerpt">"诗是毒药，也是解药..."</p>
-                    <a href="#" class="read-more" data-poem="51">阅读全文 →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="all-poems" id="all-poems">
-        <h2 class="section-title">全部诗作</h2>
-        <div class="poems-grid">
-
-            <div class="poem-card" data-poem="0">
-                <img data-src="images/poem_001.jpg" alt="我想" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>我想</h3>
-                    <p class="date">2015.5.30</p>
-                    <p class="preview">将悲哀写进命里，用血去颂扬。</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="1">
-                <img data-src="images/poem_002.jpg" alt="带着阳光上路" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>带着阳光上路</h3>
-                    <p class="date">2015.12.18</p>
-                    <p class="preview">如果没有，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="2">
-                <img data-src="images/poem_003.jpg" alt="何必相扰" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>何必相扰</h3>
-                    <p class="date">2016.5.11</p>
-                    <p class="preview">你与我，默然于世之苍茫，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="3">
-                <img data-src="images/poem_004.jpg" alt="生命" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>生命</h3>
-                    <p class="date">2016.10.7</p>
-                    <p class="preview">有的东西，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="4">
-                <img data-src="images/poem_005.jpg" alt="游者之命" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>游者之命</h3>
-                    <p class="date">2016.10.8</p>
-                    <p class="preview">所谓游者:</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="5">
-                <img data-src="images/poem_006.jpg" alt="没办法" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>没办法</h3>
-                    <p class="date">2016.10.15</p>
-                    <p class="preview">没办法，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="6">
-                <img data-src="images/poem_007.jpg" alt="它，从来就没有过" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>它，从来就没有过</h3>
-                    <p class="date">2016.10.17</p>
-                    <p class="preview">如果我说了，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="7">
-                <img data-src="images/poem_008.jpg" alt="做算术" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>做算术</h3>
-                    <p class="date">2016.12.27</p>
-                    <p class="preview">旅途错了，心情也错了</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="8">
-                <img data-src="images/poem_009.jpg" alt="自然的样子" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>自然的样子</h3>
-                    <p class="date">2016.12.28</p>
-                    <p class="preview">展现阳光是一种作态</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="9">
-                <img data-src="images/poem_010.jpg" alt="习惯和命" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>习惯和命</h3>
-                    <p class="date">2017.1.6</p>
-                    <p class="preview">有人选择用生命去吟唱歌曲，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="10">
-                <img data-src="images/poem_011.jpg" alt="转角无阳光" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>转角无阳光</h3>
-                    <p class="date">2017.1.7</p>
-                    <p class="preview">既然选择了孤独，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="11">
-                <img data-src="images/poem_012.jpg" alt="知道" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>知道</h3>
-                    <p class="date">2017.1.7</p>
-                    <p class="preview">耳听美好心领寂寥，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="12">
-                <img data-src="images/poem_013.jpg" alt="亡" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>亡</h3>
-                    <p class="date">2017.1.9</p>
-                    <p class="preview">给自己找个理由，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="13">
-                <img data-src="images/poem_014.jpg" alt="诶，兄弟，你右脚鞋带开了" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>诶，兄弟，你右脚鞋带开了</h3>
-                    <p class="date">2017.1.10</p>
-                    <p class="preview">我不记得多少日月，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="14">
-                <img data-src="images/poem_015.jpg" alt="一无所有" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>一无所有</h3>
-                    <p class="date">2017.1.19</p>
-                    <p class="preview">当理想与梦幻</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="15">
-                <img data-src="images/poem_016.jpg" alt="我清楚是这样" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>我清楚是这样</h3>
-                    <p class="date">2017.1.25</p>
-                    <p class="preview">我，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="16">
-                <img data-src="images/poem_017.jpg" alt="破而新生" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>破而新生</h3>
-                    <p class="date">2017.2.8</p>
-                    <p class="preview">栏杆化成了一道锁，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="17">
-                <img data-src="images/poem_018.jpg" alt="写给她的" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>写给她的</h3>
-                    <p class="date">2017.2.19</p>
-                    <p class="preview">曾经也是相伴而行</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="18">
-                <img data-src="images/poem_019.jpg" alt="都有原因" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>都有原因</h3>
-                    <p class="date">2017.3.7</p>
-                    <p class="preview">成之成，唯心有论。</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="19">
-                <img data-src="images/poem_020.jpg" alt="期许" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>期许</h3>
-                    <p class="date">2017.3.8</p>
-                    <p class="preview">可，是没有你？</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="20">
-                <img data-src="images/poem_021.jpg" alt="瞎说的" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>瞎说的</h3>
-                    <p class="date">2017.3.9</p>
-                    <p class="preview">我不知道为什么，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="21">
-                <img data-src="images/poem_022.jpg" alt="都在梦里" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>都在梦里</h3>
-                    <p class="date">2017.3.10</p>
-                    <p class="preview">如果梦随心去了，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="22">
-                <img data-src="images/poem_023.jpg" alt="后悔" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>后悔</h3>
-                    <p class="date">2017.3.11</p>
-                    <p class="preview">有多少可惜是发生在遗憾之后。</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="23">
-                <img data-src="images/poem_024.jpg" alt="成年了" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>成年了</h3>
-                    <p class="date">2017.3.13</p>
-                    <p class="preview">如果生活说，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="24">
-                <img data-src="images/poem_025.jpg" alt="庆幸" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>庆幸</h3>
-                    <p class="date">2017.3.16</p>
-                    <p class="preview">有的人，总想写些什么，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="25">
-                <img data-src="images/poem_026.jpg" alt="写在路上" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>写在路上</h3>
-                    <p class="date">2017.3.17</p>
-                    <p class="preview">我曾不知，你在何处</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="26">
-                <img data-src="images/poem_027.jpg" alt="对着屎叩拜" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>对着屎叩拜</h3>
-                    <p class="date">2017.3.20</p>
-                    <p class="preview">如果你的生命活在</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="27">
-                <img data-src="images/poem_028.jpg" alt="终点与终结" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>终点与终结</h3>
-                    <p class="date">2017.3.24</p>
-                    <p class="preview">如果，不能忘，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="28">
-                <img data-src="images/poem_029.jpg" alt="执着" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>执着</h3>
-                    <p class="date">2017.3.27</p>
-                    <p class="preview">有些梦，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="29">
-                <img data-src="images/poem_030.jpg" alt="哄小孩" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>哄小孩</h3>
-                    <p class="date">2017.3.31</p>
-                    <p class="preview">我这个心情，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="30">
-                <img data-src="images/poem_031.jpg" alt="我和你们" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>我和你们</h3>
-                    <p class="date">2017.4.11</p>
-                    <p class="preview">给一个，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="31">
-                <img data-src="images/poem_032.jpg" alt="梦" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>梦</h3>
-                    <p class="date">2017.4.12</p>
-                    <p class="preview">别把梦，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="32">
-                <img data-src="images/poem_033.jpg" alt="那被叫做青春的一小部分" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>那被叫做青春的一小部分</h3>
-                    <p class="date">2017.4.13</p>
-                    <p class="preview">我曾忘了</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="33">
-                <img data-src="images/poem_034.jpg" alt="小凉" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>小凉</h3>
-                    <p class="date">2017.4.27</p>
-                    <p class="preview">一切的世态炎凉</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="34">
-                <img data-src="images/poem_035.jpg" alt="记得" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>记得</h3>
-                    <p class="date">2017.5.1</p>
-                    <p class="preview">生活已经如此艰难，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="35">
-                <img data-src="images/poem_036.jpg" alt="想法" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>想法</h3>
-                    <p class="date">2017.5.9</p>
-                    <p class="preview">染一个和瞳孔差不多的颜色</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="36">
-                <img data-src="images/poem_037.jpg" alt="随想的话" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>随想的话</h3>
-                    <p class="date">2017.5.12</p>
-                    <p class="preview">你并不一定能</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="37">
-                <img data-src="images/poem_038.jpg" alt="无悔" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>无悔</h3>
-                    <p class="date">2017.5.20</p>
-                    <p class="preview">经营了好多年的庄稼，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="38">
-                <img data-src="images/poem_039.jpg" alt="用笑容抱怨" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>用笑容抱怨</h3>
-                    <p class="date">2017.6.3</p>
-                    <p class="preview">安稳与安全感，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="39">
-                <img data-src="images/poem_040.jpg" alt="有的人" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>有的人</h3>
-                    <p class="date">2017.7.6</p>
-                    <p class="preview">走了，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="40">
-                <img data-src="images/poem_041.jpg" alt="一样的" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>一样的</h3>
-                    <p class="date">2017.7.19</p>
-                    <p class="preview">忘了的，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="41">
-                <img data-src="images/poem_042.jpg" alt="忘了" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>忘了</h3>
-                    <p class="date">2017.7.20</p>
-                    <p class="preview">一个人</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="42">
-                <img data-src="images/poem_043.jpg" alt="向前走" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>向前走</h3>
-                    <p class="date">2017.8.5</p>
-                    <p class="preview">做一个向前走的人，</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="43">
-                <img data-src="images/poem_044.jpg" alt="归途" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>归途</h3>
-                    <p class="date">2017.10.25</p>
-                    <p class="preview">缠绕着孤独，像是迷途。</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="44">
-                <img data-src="images/poem_045.jpg" alt="你是在看火光对吧" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>你是在看火光对吧</h3>
-                    <p class="date">2017.11.30</p>
-                    <p class="preview">看见那落叶了么</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="45">
-                <img data-src="images/poem_046.jpg" alt="点燃" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>点燃</h3>
-                    <p class="date">2017.12.22</p>
-                    <p class="preview">不是所有的花</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="46">
-                <img data-src="images/poem_047.jpg" alt="其实是在渡劫" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>其实是在渡劫</h3>
-                    <p class="date">2017.12.28</p>
-                    <p class="preview">要怪只能怪世上的每个灵魂都那么孤独</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="47">
-                <img data-src="images/poem_048.jpg" alt="就这样" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>就这样</h3>
-                    <p class="date">2018.2.9</p>
-                    <p class="preview">不用解释，无需反驳。</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="48">
-                <img data-src="images/poem_049.jpg" alt="缘" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>缘</h3>
-                    <p class="date">2018.2.10</p>
-                    <p class="preview">什么事情都要看缘分</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="49">
-                <img data-src="images/poem_050.jpg" alt="写给子湫" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>写给子湫</h3>
-                    <p class="date">2018.2.18</p>
-                    <p class="preview">如果说是命运</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="50">
-                <img data-src="images/poem_051.jpg" alt="恩赏" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>恩赏</h3>
-                    <p class="date">2018.3.6</p>
-                    <p class="preview">有一丝惆怅</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="51">
-                <img data-src="images/poem_052.jpg" alt="诗是毒药" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>诗是毒药</h3>
-                    <p class="date">2018.3.9</p>
-                    <p class="preview">引用不幸福的人写的关于幸福的句子</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="52">
-                <img data-src="images/poem_053.jpg" alt="一点光" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>一点光</h3>
-                    <p class="date">2018.3.11</p>
-                    <p class="preview">有一块空落落的地方</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="53">
-                <img data-src="images/poem_054.jpg" alt="夜太长，星星没亮" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>夜太长，星星没亮</h3>
-                    <p class="date">2019.3.16</p>
-                    <p class="preview">从哪里飘来的一片落叶？</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="54">
-                <img data-src="images/poem_055.jpg" alt="差一点" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>差一点</h3>
-                    <p class="date">2018.3.17</p>
-                    <p class="preview">差一个仪式</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="55">
-                <img data-src="images/poem_056.jpg" alt="同生天地" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>同生天地</h3>
-                    <p class="date">2018.3.19</p>
-                    <p class="preview">两朵花</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="56">
-                <img data-src="images/poem_057.jpg" alt="成长" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>成长</h3>
-                    <p class="date">2018.3.19</p>
-                    <p class="preview">成长与时间并行</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="57">
-                <img data-src="images/poem_058.jpg" alt="长出羽毛" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>长出羽毛</h3>
-                    <p class="date">2018.3.22</p>
-                    <p class="preview">其实，不是很喜欢</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="58">
-                <img data-src="images/poem_059.jpg" alt="思你刚好" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>思你刚好</h3>
-                    <p class="date">2018.3.25</p>
-                    <p class="preview">我想起了</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="59">
-                <img data-src="images/poem_060.jpg" alt="不见相安" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>不见相安</h3>
-                    <p class="date">2018.3.29</p>
-                    <p class="preview">时日长久</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="60">
-                <img data-src="images/poem_061.jpg" alt="梦幻泡泡" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>梦幻泡泡</h3>
-                    <p class="date">2018.3.31</p>
-                    <p class="preview">你把梦幻作泡泡</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="61">
-                <img data-src="images/poem_062.jpg" alt="前命的幻想" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>前命的幻想</h3>
-                    <p class="date">2018.4.13</p>
-                    <p class="preview">把性命拴在飘摇的树上</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="62">
-                <img data-src="images/poem_063.jpg" alt="偏执" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>偏执</h3>
-                    <p class="date">2018.4.13</p>
-                    <p class="preview">恍惚</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="63">
-                <img data-src="images/poem_064.jpg" alt="流世莽荒" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>流世莽荒</h3>
-                    <p class="date">2018.4.14</p>
-                    <p class="preview">朝朝夕夕</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="64">
-                <img data-src="images/poem_065.jpg" alt="人多得像花一样" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>人多得像花一样</h3>
-                    <p class="date">2018.4.16</p>
-                    <p class="preview">有的人</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="65">
-                <img data-src="images/poem_066.jpg" alt="牢房自述" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>牢房自述</h3>
-                    <p class="date">2018.4.24</p>
-                    <p class="preview">如果陷入了监牢</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="66">
-                <img data-src="images/poem_067.jpg" alt="对于我" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>对于我</h3>
-                    <p class="date">2018.5.6</p>
-                    <p class="preview">一个人静静地呆着</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="67">
-                <img data-src="images/poem_068.jpg" alt="不解" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>不解</h3>
-                    <p class="date">2018.5.8</p>
-                    <p class="preview">为什么还不能放弃这个世界么？</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="68">
-                <img data-src="images/poem_069.jpg" alt="殊途同归" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>殊途同归</h3>
-                    <p class="date">2018.5.22</p>
-                    <p class="preview">因为是普通人</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="69">
-                <img data-src="images/poem_070.jpg" alt="瞎话" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>瞎话</h3>
-                    <p class="date">2018.5.24</p>
-                    <p class="preview">人生目标：</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="70">
-                <img data-src="images/poem_071.jpg" alt="无能为力" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>无能为力</h3>
-                    <p class="date">2018.7.6</p>
-                    <p class="preview">无能为力</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="71">
-                <img data-src="images/poem_072.jpg" alt="饮尽即云裳" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>饮尽即云裳</h3>
-                    <p class="date">2018.7.8</p>
-                    <p class="preview">不如感觉悲伤</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="72">
-                <img data-src="images/poem_073.jpg" alt="都这样" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>都这样</h3>
-                    <p class="date">2018.7.25</p>
-                    <p class="preview">即使苦闷</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="73">
-                <img data-src="images/poem_074.jpg" alt="心空" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>心空</h3>
-                    <p class="date">2018.7.27</p>
-                    <p class="preview">一个果子</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="74">
-                <img data-src="images/poem_075.jpg" alt="自造烦恼" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>自造烦恼</h3>
-                    <p class="date">2018.8.17</p>
-                    <p class="preview">世界上有多少事</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="75">
-                <img data-src="images/poem_076.jpg" alt="随烟波" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>随烟波</h3>
-                    <p class="date">2018.8.21</p>
-                    <p class="preview">扼住了喉舌</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="76">
-                <img data-src="images/poem_077.jpg" alt="怎样都一样" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>怎样都一样</h3>
-                    <p class="date">2018.8.26</p>
-                    <p class="preview">从懂事以来</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="77">
-                <img data-src="images/poem_078.jpg" alt="不言" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>不言</h3>
-                    <p class="date">2018.8.28</p>
-                    <p class="preview">一言风浅</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="78">
-                <img data-src="images/poem_079.jpg" alt="随时欢迎" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>随时欢迎</h3>
-                    <p class="date">2018.8.30</p>
-                    <p class="preview">这感觉</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="79">
-                <img data-src="images/poem_080.jpg" alt="诧异" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>诧异</h3>
-                    <p class="date">2018.9.2</p>
-                    <p class="preview">有的东西</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="80">
-                <img data-src="images/poem_081.jpg" alt="寞凉" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>寞凉</h3>
-                    <p class="date">2018.9.5</p>
-                    <p class="preview">我不曾看过</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="81">
-                <img data-src="images/poem_082.jpg" alt="罪行无期" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>罪行无期</h3>
-                    <p class="date">2018.9.7</p>
-                    <p class="preview">我不忘你</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="82">
-                <img data-src="images/poem_083.jpg" alt="欢愉" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>欢愉</h3>
-                    <p class="date">2018.9.8</p>
-                    <p class="preview">不停的</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="83">
-                <img data-src="images/poem_084.jpg" alt="无法反抗，顺理成章" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>无法反抗，顺理成章</h3>
-                    <p class="date">2018.9.8</p>
-                    <p class="preview">东西丢了找不回是经常的事</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="84">
-                <img data-src="images/poem_085.jpg" alt="不怕" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>不怕</h3>
-                    <p class="date">2018.9.11</p>
-                    <p class="preview">每天都定成欣喜</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="85">
-                <img data-src="images/poem_086.jpg" alt="求放过" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>求放过</h3>
-                    <p class="date">2018.9.12</p>
-                    <p class="preview">本就不值得的事太多了</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="86">
-                <img data-src="images/poem_087.jpg" alt="独自听风" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>独自听风</h3>
-                    <p class="date">2018.9.14</p>
-                    <p class="preview">我可以自认为是曲高和寡</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="87">
-                <img data-src="images/poem_088.jpg" alt="割掉舌头" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>割掉舌头</h3>
-                    <p class="date">2018.9.14</p>
-                    <p class="preview">有时心情很调皮</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="88">
-                <img data-src="images/poem_089.jpg" alt="故乡" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>故乡</h3>
-                    <p class="date">2018.9.16</p>
-                    <p class="preview">慌张，随意的幻想</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="89">
-                <img data-src="images/poem_090.jpg" alt="山竹（台风）" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>山竹（台风）</h3>
-                    <p class="date">2018.9.16</p>
-                    <p class="preview">风刮跑了思念</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="90">
-                <img data-src="images/poem_091.jpg" alt="骆驼与沙漠" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>骆驼与沙漠</h3>
-                    <p class="date">2018.9.17</p>
-                    <p class="preview">磕破，放过</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="91">
-                <img data-src="images/poem_092.jpg" alt="命" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>命</h3>
-                    <p class="date">2018.9.19</p>
-                    <p class="preview">未来化成了一把钥匙</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="92">
-                <img data-src="images/poem_093.jpg" alt="完成" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>完成</h3>
-                    <p class="date">2018.11.1</p>
-                    <p class="preview">不曾想，不要想；</p>
-                </div>
-            </div>
-
-            <div class="poem-card" data-poem="93">
-                <img data-src="images/poem_094.jpg" alt="木池" class="poem-card-image">
-                <div class="poem-card-content">
-                    <h3>木池</h3>
-                    <p class="date">2019.1.8</p>
-                    <p class="preview">一木临于一池，池有鱼，木有鸟。却春风秋夜，时如沙之飞舞，叶随光落，水随辰蒸。有鱼或无鱼，有羽或无羽。千百年，唯不变木与池矣。何？岁月如长，韶光相望。心念：愿伴子之侧，与子偕老，诺以春秋，同存浩渺。</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    
-    <footer id="about">
-        <p>勿繁 · 短诗集 · 2015-2019</p>
-    </footer>
-    
-    <div class="modal" id="poemModal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <img src="" alt="" class="modal-image" id="modalImage">
-            <h2 id="modalTitle"></h2>
-            <p class="date" id="modalDate"></p>
-            <div class="poem-text" id="modalText"></div>
-        </div>
-    </div>
-    
-    <script>
-        // Modal functionality
-        const modal = document.getElementById('poemModal');
-        const modalImage = document.getElementById('modalImage');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalDate = document.getElementById('modalDate');
-        const modalText = document.getElementById('modalText');
-        const modalClose = document.querySelector('.modal-close');
-        
+            color: var(--text-light);
         const poems = [
             {
                 title: '我想',
@@ -2088,123 +715,82 @@
             }
         ];
         
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + featuredPoems.length) % featuredPoems.length;
+            updateSlide();
+        }
+        
+        // Render all poems grid
+        function renderPoems() {
+            const grid = document.getElementById('poemsGrid');
+            grid.innerHTML = poems.map((poem, index) => `
+                <div class="poem-card" onclick="openModal(${index})">
+                    <img src="${poem.image}" alt="${poem.title}" class="poem-card-image" loading="lazy">
+                    <div class="poem-card-content">
+                        <h3>${poem.title}</h3>
+                        <p class="date">${poem.date}</p>
+                        <p class="preview">${poem.content.substring(0, 100)}...</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Modal functions
+        let currentPoemIndex = 0;
+        
         function openModal(index) {
+            currentPoemIndex = index;
             const poem = poems[index];
-            modalImage.src = poem.image;
-            modalImage.alt = poem.title;
-            modalTitle.textContent = poem.title;
-            modalDate.textContent = poem.date;
-            modalText.textContent = poem.content;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            document.getElementById('modalImage').src = poem.image;
+            document.getElementById('modalTitle').textContent = poem.title;
+            document.getElementById('modalDate').textContent = poem.date;
+            document.getElementById('modalText').textContent = poem.content;
+            document.getElementById('poemModal').style.display = 'flex';
         }
         
         function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
+            document.getElementById('poemModal').style.display = 'none';
         }
         
-        // Card click
-        document.querySelectorAll('.poem-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const index = parseInt(card.dataset.poem);
-                openModal(index);
-            });
-        });
-        
-        // Read more links
-        document.querySelectorAll('.read-more').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const index = parseInt(link.dataset.poem);
-                openModal(index);
-            });
-        });
-        
-        // Close modal
-        modalClose.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-        
-        // Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-        
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.classList.contains('read-more')) return;
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-        
-        // Lazy loading for images
-        document.addEventListener('DOMContentLoaded', function() {
-            const lazyImages = document.querySelectorAll('img[data-src]');
-            
-            if ('IntersectionObserver' in window) {
-                const imageObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                            observer.unobserve(img);
-                        }
-                    });
-                }, {
-                    rootMargin: '50px 0px',
-                    threshold: 0.01
+        // Action functions
+        function sharePoem(index) {
+            const poem = poems[index || currentPoemIndex];
+            if (navigator.share) {
+                navigator.share({
+                    title: poem.title,
+                    text: poem.content.substring(0, 100) + '...',
+                    url: window.location.href
                 });
-                
-                lazyImages.forEach(img => imageObserver.observe(img));
             } else {
-                // Fallback for older browsers
-                lazyImages.forEach(img => {
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                });
+                alert('分享: ' + poem.title);
             }
+        }
+        
+        function copyLink(index) {
+            const url = window.location.href + '#' + (index || currentPoemIndex);
+            navigator.clipboard.writeText(url).then(() => {
+                alert('链接已复制');
+            }).catch(() => {
+                alert('复制链接: ' + url);
+            });
+        }
+        
+        function rattlePoem(index) {
+            const countEl = document.getElementById('rattleCount' + (index !== undefined ? index : ''));
+            if (countEl) {
+                const current = parseInt(countEl.textContent) || 0;
+                countEl.textContent = current + 1;
+            }
+        }
+        
+        // Close modal on outside click
+        document.getElementById('poemModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
         });
         
-        // Nav scroll effect
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-        // Back to top button
-        const backToTop = document.createElement('button');
-        backToTop.innerHTML = '↑';
-        backToTop.className = 'back-to-top';
-        backToTop.style.cssText = 'position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;border:1px solid var(--border-color);background:rgba(245,237,228,0.9);color:var(--text-dark);font-size:1.2rem;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s ease;z-index:999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);';
-        document.body.appendChild(backToTop);
-        
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > window.innerHeight * 0.5) {
-                backToTop.style.opacity = '1';
-                backToTop.style.visibility = 'visible';
-            } else {
-                backToTop.style.opacity = '0';
-                backToTop.style.visibility = 'hidden';
-            }
-        });
-        
-        backToTop.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        // Initialize
+        renderFeatured();
+        renderPoems();
     </script>
 </body>
 </html>
-<!-- 2026年 7月 5日 星期日 19时29分10秒 CST -->
-/* force refresh 1783255629 */
-/* cache-bust 1783256198 */
